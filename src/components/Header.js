@@ -21,7 +21,11 @@ const Rigthbar = styled.section`
     color:white;
     background-color: #0d253f;
     border:solid white 1px;
+    font-size:15px;
     
+   }
+   p{
+    font-size:15px; 
    }
 
 
@@ -64,6 +68,7 @@ const Sidebar = styled.section`
     width:100%;
     
     nav{
+
     height:90%;
     width:95%;
     display:flex;
@@ -111,7 +116,7 @@ function Header() {
                         <ul>
                             <li>Movies</li>
                             <li>TV Shows</li>
-                            <li>Poople</li>
+                            <li>People</li>
                             <li>More</li>
                         </ul>
                     </Leftbar>

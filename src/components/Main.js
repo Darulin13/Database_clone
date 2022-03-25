@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import styled from 'styled-components'
 
+
 const Container = styled.main`
     display:flex;
     flex-direction:column;
@@ -21,7 +22,7 @@ const Title = styled.section`
     flex-direction:row;
     justify-content:space-between;
     width:50%;
-    padding-bottom:30vh;
+    padding-bottom:5vh;
 
     align-items:center;
 
@@ -48,6 +49,8 @@ const Title = styled.section`
    
     h1{
         width:30%; 
+        font-size:25px;
+        font-weight:400;
     }
     nav{
         height:5vh;
@@ -66,24 +69,29 @@ const Films = styled.section`
     display:flex;
     flex-direction:row;
     overflow:scroll;
-    height:50vh;
+    height:44vh;
+    border:solid 5px green;
    
     
 
 `
-const Info = styled.div`
+const Info = styled.ul`
     display:flex;
     flex-direction:column;
     justify-content:space-evenly;
-    width:30vh;
-    height:30vh;
-  
+    width:50vh; 
+    height:40vh;
+    border:solid red;
     align-items:center;
     img{
-        width:15vh;
+        width:25vh;
+        height:40vh;
+        border:solid blue;
+       
     }
-    h2 {
-     font-size:15px;
+    li {
+     font-size:20px;
+     list-styled:none;
     }
     
 `
@@ -103,7 +111,8 @@ export default class Main extends React.Component {
 
         const filmes = response.data.results.map((item) => {
             return {
-                ...item
+                ...item,
+                poster_path: `https://image.tmdb.org/t/p/w500/${item.poster_path}`
             }
         })
 
@@ -127,14 +136,15 @@ export default class Main extends React.Component {
                         </nav>
                     </Title>
 
-                    <Films> 
-                        {this.state.listFilmes.map((item) => (
-                        <Info>
+                    <Films>
+                        {this.state.listFilmes.map((item,index) => (
+                            <Info key={index}>
 
-                            <img src="item.poster_path" alt="imagem" />
-                            <h2>{item.title}</h2>
-                        </Info>
-                    ))}
+                                <img src={item.poster_path} alt="" />
+                                <li>{item.title}</li>
+                                
+                            </Info>
+                        ))}
                     </Films>
 
                 </div>
