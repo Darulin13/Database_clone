@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./components/Header"
 import Main from "./components/Main"
+import Series from "./components/Series";
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
@@ -21,6 +22,8 @@ export default function App() {
             <GlobalStyle/>
             <Header/>
             <Main />
+            <Series/>
+           
         </div>
     )
 }
