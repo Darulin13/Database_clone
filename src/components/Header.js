@@ -1,7 +1,7 @@
 import React from "react";
 import styled from 'styled-components'
-
-
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Series from "./pages/Series"
 
 const Container = styled.header`
    background-color: #0d253f;
@@ -108,46 +108,54 @@ const Search = styled.form`
 
 
 
-const Header = () => {
-    return (
+export default class Header extends React.Component {
+    render() {
+        return (
 
-        <Container>
-            <Sidebar>
-                <nav>
-                    <Leftbar>
-                        <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" alt="logo" />
-                        <ul>
-                <li>Movies</li>
-                              
+            <Container>
+                <Sidebar>
+                    <nav>
+                        <Leftbar>
+                            <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" alt="logo" />
+                            <ul>
+
+                                <li>Movies</li>
+
+
+
+
+                                    <li> Shows</li>
+                      
+                             
                                 
-                                <li>TV Shows</li>
+                            
                                 <li>People</li>
                                 <li>More</li>
-                    
-                        </ul>
-                    </Leftbar>
-                    <Rigthbar>
-                        <Buttonmore >+</Buttonmore>
 
-                        <Buttonmore>EN</Buttonmore>
-                        <p>Login</p>
-                        <p>Join TMDB</p>
+                            </ul>
+                        </Leftbar>
+                        <Rigthbar>
+                            <Buttonmore >+</Buttonmore>
+
+                            <Buttonmore>EN</Buttonmore>
+                            <p>Login</p>
+                            <p>Join TMDB</p>
 
 
-                    </Rigthbar>
+                        </Rigthbar>
 
-                </nav></Sidebar>
-            <Search>
-                <div>
-                    <h2>Welcome.</h2>
-                    <h3>Millions of movies, TV shows and people to discover. Explore now.</h3>
-                </div>
+                    </nav></Sidebar>
+                <Search>
+                    <div>
+                        <h2>Welcome.</h2>
+                        <h3>Millions of movies, TV shows and people to discover. Explore now.</h3>
+                    </div>
 
-                <input placeholder="Search for a movie,tv show,person...." type="text" />
-            </Search>
+                    <input placeholder="Search for a movie,tv show,person...." type="text" />
+                </Search>
 
-        </Container>
-    )
 
-}
-export default Header
+            </Container>
+        )
+    }
+} 
