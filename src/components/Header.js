@@ -1,8 +1,5 @@
 import React from "react";
 import styled from 'styled-components'
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Series from "./pages/Series"
-
 const Container = styled.header`
    background-color: #0d253f;
   

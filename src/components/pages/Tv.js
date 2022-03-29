@@ -3,25 +3,38 @@ import axios from "axios";
 import styled from "styled-components";
 
 const Container = styled.section`
-  display:flex;
-  flex:direction:row;
-  justify-content:space-evenly;
+  display:grid;
+  grid-template-columns:repeat(20,12%);
   overflow:scroll;
   height:100%;
-  border:solid yellow;
-  width:100%
+  width:100%;
+  column-gap:10px;
+
+
   h1{
     color:black;
-    font-size:10px;
-    border:none;
+    font-size:15px;
+    border:solid white;
+
+    width:90%;
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+    
+   
   }
   div{
-    width:5.5%
+    width:100%;
+  
+
    
   }
   img{
-    border:solid orange;
-    width:90%
+ 
+    width:90%;
+    border-radius:8px;
+ 
   }
 `
 

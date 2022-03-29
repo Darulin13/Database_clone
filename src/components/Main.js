@@ -3,6 +3,7 @@ import axios from "axios";
 import styled from 'styled-components'
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Tv from "./pages/Tv";
+import Movies from "./pages/Movies"
 
 const Container = styled.main`
     display:flex;
@@ -24,14 +25,14 @@ const Container = styled.main`
 const Rota = styled.section`
     display:flex;
     flex-direction:column;
-    border:solid red;
+
     justify-content:space-between;
     height:70vh;
     nav{
         width:60%;
         display:flex;
         flex-direction:row;
-        border:solid blue;
+
         justify-content:space-between;
         height:15%;
         align-items:center;
@@ -99,7 +100,7 @@ export default class Main extends React.Component {
                             <nav>
                                 <h1>What's Popular</h1>
                                 <ul>
-                                    <Link to="/"><button>Streaming</button></Link>
+                                    <Link to="/Movies"><button>Streaming</button></Link>
                                     <Link to="/Tv"><button>on TV</button></Link>
                                     <Link to="/For_rent"><button>For rent</button></Link>
                                     <Link to="/Theaters"><button>In Theaters</button></Link>
@@ -108,6 +109,9 @@ export default class Main extends React.Component {
                             <article>
                                 <Routes>
                                     <Route path="/Tv" element={<Tv />} />
+                                </Routes>
+                                <Routes>
+                                    <Route path="/Movies" element={<Movies />} />
                                 </Routes>
                             </article>
 
