@@ -1,5 +1,6 @@
 import React from "react";
 import styled from 'styled-components'
+import axios from "axios";
 const Container = styled.header`
    background-color: #0d253f;
   
@@ -76,36 +77,113 @@ const Sidebar = styled.section`
     align-items:center;
     }
     `
-const Search = styled.form`
-    height:50vh;
+const Title = styled.section`
+    height:25vh;
     width:94%;
     display:flex;
     flex-direction:column;
     justify-content:space-evenly;
     h2 {
-    
+
         color:white;
         font-size:60px;
     }
+    h3{
+        color:white;
+        font-size:30px;   
+    }
+`
+
+const Search = styled.form`
+    width:94%;
+    height:30vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+   
     input{
         width:94%; 
-        height:7vh;
+        height:30%;
         border-radius:30px;
         padding-left: 20px;
         font-size:15px;
         border:solid 1px;
       
     }
-    h3{
-        color:white;
-        font-size:30px;   
+
+    article{
+
+        width:94%;
+        background-color:white;
+        overflow-y:scroll;     
+    }
+    div{
+        width:40%;
+        height:35%;
+
+        display:flex;
+        flex-direction:row;
+        justify-content:space-between;
+        align-items:center;
+        border-bottom:solid 1px;
+    }
+    p{
+        width:50%;
+    
+        font-size:20px;
+    }
+    img{
+        width:10%;
+        height:90%;
+
+
     }
 
+
 `
+
+const api = axios.create({
+    baseURL: "https://api.themoviedb.org/3/movie/popular?api_key=e41d5f9d5773dc5887077f4c5ffdb645&language=en-US&page=1"
+})
 
 
 
 export default class Header extends React.Component {
+    state = {
+        filterFilms: [],
+        listFilms: [],
+    }
+
+    async componentDidMount() {
+        const response = await api.get()
+        console.log("Header", response.data.results)
+
+        const films = response.data.results.map((item) => {
+            return {
+                ...item,
+                poster_path: `https://image.tmdb.org/t/p/w200/${item.poster_path}`
+            }
+        })
+        this.setState({
+            listFilms: films
+        })
+    }
+
+
+
+    Search = (event) => {
+        const { listFilms } = this.state;
+
+        const filterFilms = listFilms.filter((item) => {
+            if (item.title.toLowerCase().includes(event.target.value.toLowerCase())) {
+                return true
+            }
+        })
+        this.setState({
+            filterFilms: filterFilms
+        })
+
+    }
     render() {
         return (
 
@@ -115,40 +193,40 @@ export default class Header extends React.Component {
                         <Leftbar>
                             <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" alt="logo" />
                             <ul>
-
                                 <li>Movies</li>
-
-
-
-
-                                    <li> Shows</li>
-                      
-                             
-                                
-                            
+                                <li> Shows</li>
                                 <li>People</li>
                                 <li>More</li>
-
                             </ul>
                         </Leftbar>
                         <Rigthbar>
                             <Buttonmore >+</Buttonmore>
-
                             <Buttonmore>EN</Buttonmore>
                             <p>Login</p>
                             <p>Join TMDB</p>
-
-
                         </Rigthbar>
-
-                    </nav></Sidebar>
-                <Search>
+                    </nav>
+                </Sidebar>
+                <Title>
                     <div>
                         <h2>Welcome.</h2>
                         <h3>Millions of movies, TV shows and people to discover. Explore now.</h3>
                     </div>
+                </Title>
+                <Search>
+                    <input placeholder="Search for a movie,tv show,person...." type="text" onChange={this.Search} />
 
-                    <input placeholder="Search for a movie,tv show,person...." type="text" />
+                    <article>
+                        {this.state.filterFilms.map((item) => (
+                            <div>
+                                <p>{item.title}</p>
+                                <img src={item.poster_path} alt="" />
+                            </div>
+
+                        ))}
+                    </article>
+
+
                 </Search>
 
 

@@ -39,22 +39,47 @@ const Rota = styled.section`
 
     }
     h1{
-        border:solid black;
+     
         color:red;
         width:30%;
         font-size:30px;
         color:black;
     }
     ul{
-        border:solid pink;
+      
+        
+        border:solid 1px #0d253f;
         width:65%;
         border-radius:20px;
         height:60%;
     }
     button{
         width:25%;
-        border-radius:20px;
+
+        border-right:none;
         height:100%;
+        background-color:white;
+        color:#0d253f;
+        font-size:15px;
+        font-weight:700;
+        border:none;
+        padding-left:10px;
+        padding-right:10px;
+        border-radius:20px;
+        
+
+    }
+    button:hover{ 
+        border-radius:30px;
+        color:#90cea1;
+        background-color:#0d253f;
+  
+       
+    }
+    ul:hover{
+        border-left:none;
+        border-right:white;
+        border-radius:none;
     }
     article{
         height:82%;
@@ -71,6 +96,7 @@ const api = axios.create({
 export default class Main extends React.Component {
     state = {
         listFilmes: [],
+     
 
     }
     async componentDidMount() {

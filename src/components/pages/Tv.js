@@ -5,7 +5,7 @@ import styled from "styled-components";
 const Container = styled.section`
   display:grid;
   grid-template-columns:repeat(20,12%);
-  overflow:scroll;
+  overflow-x:scroll;  
   height:100%;
   width:100%;
   column-gap:10px;
