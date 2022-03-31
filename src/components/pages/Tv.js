@@ -6,24 +6,28 @@ const Container = styled.section`
   display:grid;
   grid-template-columns:repeat(20,12%);
   overflow-x:scroll;  
-  height:100%;
+  height:85%;
   width:100%;
   column-gap:10px;
 
-
-  h1{
+  p{
     color:black;
     font-size:15px;
     border:solid white;
-
+    font-weight:900;
     width:90%;
     display:flex;
     flex-direction:row;
     justify-content:center;
     align-items:center;
+    cursor: pointer;
     
    
   }
+  p:hover{
+    color:#01b4e4;
+
+}
   div{
     width:100%;
   
@@ -31,7 +35,7 @@ const Container = styled.section`
    
   }
   img{
- 
+    cursor: pointer;
     width:90%;
     border-radius:8px;
  
@@ -67,7 +71,7 @@ export default class Tv extends React.Component {
         {this.state.listTv.map((item, index) => (
           <div key={index}>
             <img src={item.poster_path} alt="" />
-            <h1>{item.name}</h1>
+            <p>{item.name}</p>
           </div>
         ))}
       </Container>

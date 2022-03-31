@@ -11,8 +11,8 @@ const Container = styled.main`
     justify-content:center;
     width:100%;
     align-items:center;
-    height:90vh;
-    border:solid green;
+    height:75vh;
+
 
  
     div{
@@ -25,25 +25,24 @@ const Container = styled.main`
 const Rota = styled.section`
     display:flex;
     flex-direction:column;
-
     justify-content:space-between;
     height:70vh;
     nav{
-        width:60%;
+        width:45%;
         display:flex;
         flex-direction:row;
-
         justify-content:space-between;
-        height:15%;
+        height:13%;
         align-items:center;
-
-    }
-    h1{
+   
      
-        color:red;
-        width:30%;
-        font-size:30px;
+    }
+    h2{
+     
         color:black;
+        width:35%;
+       
+        font-size:4vh;
     }
     ul{
       
@@ -60,7 +59,7 @@ const Rota = styled.section`
         height:100%;
         background-color:white;
         color:#0d253f;
-        font-size:15px;
+        font-size:13px;
         font-weight:700;
         border:none;
         padding-left:10px;
@@ -73,12 +72,13 @@ const Rota = styled.section`
         border-radius:30px;
         color:#90cea1;
         background-color:#0d253f;
+        cursor: pointer;
   
        
     }
     ul:hover{
-        border-left:none;
-        border-right:white;
+      
+    
         border-radius:none;
     }
     article{
@@ -124,7 +124,7 @@ export default class Main extends React.Component {
                     <Rota>
                         <Router>
                             <nav>
-                                <h1>What's Popular</h1>
+                                <h2>What's Popular</h2>
                                 <ul>
                                     <Link to="/Movies"><button>Streaming</button></Link>
                                     <Link to="/Tv"><button>on TV</button></Link>

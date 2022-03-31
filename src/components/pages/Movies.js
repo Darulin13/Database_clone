@@ -11,16 +11,17 @@ const Container = styled.section`
   display:grid;
   grid-template-columns:repeat(20,12%);
   overflow-x:scroll;  
-  height:100%;
+  height:85%;
   width:100%;
   column-gap:10px;
 
 
-  h1{
+  p{
+    cursor: pointer;
     color:black;
     font-size:15px;
     border:solid white;
-
+    font-weight:900;
     width:90%;
     display:flex;
     flex-direction:row;
@@ -29,6 +30,10 @@ const Container = styled.section`
     
    
   }
+  p:hover{
+      color:#01b4e4;
+
+  }
   div{
     width:100%;
   
@@ -36,6 +41,7 @@ const Container = styled.section`
    
   }
   img{
+    cursor: pointer;
  
     width:90%;
     border-radius:8px;
@@ -69,7 +75,7 @@ export default class Movies extends React.Component {
                 {this.state.listFilmes.map((item, index) => (
                     <div key={index}>
                         <img src={item.poster_path} alt="" />
-                        <h1>{item.title}</h1>
+                        <p>{item.title}</p>
                     </div>
                 ))}
             </Container>

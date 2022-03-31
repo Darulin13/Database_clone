@@ -16,16 +16,14 @@ const Rigthbar = styled.section`
    flex-direction:row;
    justify-content:space-evenly;
    color:white;
-   align-item:center;
-   button{
-    color:white;
-    background-color: #0d253f;
-    border:solid white 1px;
-    font-size:15px;
-    
-   }
+   align-items:center;
+
+   height:100%;
+
    p{
-    font-size:15px; 
+    cursor: pointer;
+    font-size:3vh; 
+    font-weight:600;
    }
 
 
@@ -46,17 +44,35 @@ const Leftbar = styled.section`
    }
    li{
        width:20%;
-       font-size:15px;
+       cursor: pointer;
+       font-size:3vh; 
+       font-weight:600;
        list-style:none;
        color:white;
-       font-weight:600;
+   
    }
 `
 const Buttonmore = styled.button`
-  font-size:15px;
+  font-size:5vh;
+  width:10%;
   border:none;
-  color:blue;
+  cursor: pointer;
+  color:white;
   font-weight:700;
+  background-color:transparent;
+
+  height:100%;
+   `
+   const En = styled.button`
+   background-color:transparent;
+   border:solid 1px white;
+   color:white;
+   width:8%;
+   height:60%;
+   cursor: pointer;
+   font-size:2.5vh;
+   font-weight:700;
+
    `
 const Sidebar = styled.section`
     background-color: #0d253f;
@@ -68,7 +84,6 @@ const Sidebar = styled.section`
     width:100%;
     
     nav{
-
     height:90%;
     width:95%;
     display:flex;
@@ -112,10 +127,12 @@ const Search = styled.form`
     }
 
     article{
-
+      
+       
         width:94%;
         background-color:white;
         overflow-y:scroll;     
+   
     }
     div{
         width:40%;
@@ -200,8 +217,8 @@ export default class Header extends React.Component {
                             </ul>
                         </Leftbar>
                         <Rigthbar>
-                            <Buttonmore >+</Buttonmore>
-                            <Buttonmore>EN</Buttonmore>
+                            <Buttonmore >+ </Buttonmore>
+                            <En>En</En>
                             <p>Login</p>
                             <p>Join TMDB</p>
                         </Rigthbar>
