@@ -9,6 +9,13 @@ const Container = styled.section`
   height:85%;
   width:100%;
   column-gap:10px;
+  @media(max-width:814px){
+    grid-template-columns:repeat(20,20%);
+    }
+    @media(max-width:425px){
+        grid-template-columns:repeat(20,32%);
+    }
+
 
   p{
     color:black;

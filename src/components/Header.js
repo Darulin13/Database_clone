@@ -25,6 +25,11 @@ const Rigthbar = styled.section`
     font-size:3vh; 
     font-weight:600;
    }
+   @media(max-width:768px){
+       border:solid red 3px;
+       display:none;
+
+   }
 
 
 `
@@ -35,12 +40,19 @@ const Leftbar = styled.section`
    justify-content:space-evenly;
    img{
        width:25%;
+    @media(max-width:768px){
+      width:30%;
+  
+    }
    }
    ul{
     width:65%;
     display:flex;
     flex-direction:row;
     justify-content:space-evenly;  
+    align-items:center;
+
+   
    }
    li{
        width:20%;
@@ -49,8 +61,13 @@ const Leftbar = styled.section`
        font-weight:600;
        list-style:none;
        color:white;
-   
    }
+   @media(max-width:768px){
+    width:100%;
+    justify-content:space-between;
+   
+}
+   
 `
 const Buttonmore = styled.button`
   font-size:5vh;
@@ -60,10 +77,9 @@ const Buttonmore = styled.button`
   color:white;
   font-weight:700;
   background-color:transparent;
-
   height:100%;
    `
-   const En = styled.button`
+const En = styled.button`
    background-color:transparent;
    border:solid 1px white;
    color:white;
@@ -98,6 +114,10 @@ const Title = styled.section`
     display:flex;
     flex-direction:column;
     justify-content:space-evenly;
+    padding-top:100px;
+    padding-bottom:50px;
+    
+    
     h2 {
 
         color:white;
@@ -106,7 +126,10 @@ const Title = styled.section`
     h3{
         color:white;
         font-size:30px;   
+       
     }
+
+    
 `
 
 const Search = styled.form`
@@ -155,9 +178,22 @@ const Search = styled.form`
 
 
     }
-
-
 `
+const PopupLogin = styled.div`
+    background-color:white;
+    color:black;
+    position:absolute;
+    z-index:1;
+    top:55px;
+    right:220px;
+    width:18%;
+    padding-top:20px;
+    padding-bottom:20px;
+    padding-left:10px;
+    padding-right:10px;
+    text-align:start;
+    border-radius:8px;
+    `
 
 const api = axios.create({
     baseURL: "https://api.themoviedb.org/3/movie/popular?api_key=e41d5f9d5773dc5887077f4c5ffdb645&language=en-US&page=1"
@@ -169,6 +205,7 @@ export default class Header extends React.Component {
     state = {
         filterFilms: [],
         listFilms: [],
+        popup: false,
     }
 
     async componentDidMount() {
@@ -182,12 +219,13 @@ export default class Header extends React.Component {
             }
         })
         this.setState({
-            listFilms: films
+            listFilms: films,
         })
+
     }
 
 
-
+    // Search function
     Search = (event) => {
         const { listFilms } = this.state;
 
@@ -196,10 +234,23 @@ export default class Header extends React.Component {
                 return true
             }
         })
+        if (event.target.value === "") {
+            this.setState({
+                filterFilms: "",
+            })
+        }
         this.setState({
-            filterFilms: filterFilms
+            filterFilms: filterFilms,
         })
 
+
+
+    }
+    // Modal pop-up function 
+    Popup = () => {
+        this.setState({
+            popup: !this.state.popup,
+        })
     }
     render() {
         return (
@@ -217,13 +268,18 @@ export default class Header extends React.Component {
                             </ul>
                         </Leftbar>
                         <Rigthbar>
-                            <Buttonmore >+ </Buttonmore>
+                            <Buttonmore onClick={this.Popup} >+ </Buttonmore>
                             <En>En</En>
                             <p>Login</p>
                             <p>Join TMDB</p>
                         </Rigthbar>
                     </nav>
                 </Sidebar>
+                {this.state.popup && (
+                    <PopupLogin>
+                        <p>Can't find a movie or TV show? Login to create it.</p>
+                    </PopupLogin>
+                )}
                 <Title>
                     <div>
                         <h2>Welcome.</h2>

@@ -12,9 +12,7 @@ const Container = styled.main`
     width:100%;
     align-items:center;
     height:75vh;
-
-
- 
+  
     div{
         width:95%;  
       
@@ -27,31 +25,35 @@ const Rota = styled.section`
     flex-direction:column;
     justify-content:space-between;
     height:70vh;
+    width:100%;
     nav{
-        width:45%;
+        width:60%;
         display:flex;
         flex-direction:row;
         justify-content:space-between;
-        height:13%;
+         height:13%;
         align-items:center;
-   
-     
+    
+        
+        @media(max-width:814px){
+            width:100%;    
+        }
+       
     }
     h2{
      
         color:black;
         width:35%;
-       
         font-size:4vh;
     }
     ul{
-      
-        
         border:solid 1px #0d253f;
         width:65%;
         border-radius:20px;
         height:60%;
+        overflow:hidden;
     }
+    
     button{
         width:25%;
 
@@ -96,7 +98,7 @@ const api = axios.create({
 export default class Main extends React.Component {
     state = {
         listFilmes: [],
-     
+        modal: true,
 
     }
     async componentDidMount() {
@@ -116,6 +118,12 @@ export default class Main extends React.Component {
 
     }
 
+    Modal = () => {
+        this.setState({
+            modal: false,
+        })
+    }
+
     render() {
         return (
             <Container>
@@ -126,18 +134,22 @@ export default class Main extends React.Component {
                             <nav>
                                 <h2>What's Popular</h2>
                                 <ul>
-                                    <Link to="/Movies"><button>Streaming</button></Link>
+                                    <Link to="/Movies"><button onClick={this.Modal}>Streaming</button></Link>
                                     <Link to="/Tv"><button>on TV</button></Link>
                                     <Link to="/For_rent"><button>For rent</button></Link>
-                                    <Link to="/Theaters"><button>In Theaters</button></Link>
+                                    <Link to="/Theaters"><button> Theaters</button></Link>
                                 </ul>
                             </nav>
                             <article>
-                                <Routes>
-                                    <Route path="/Tv" element={<Tv />} />
-                                </Routes>
+                                {this.state.modal && (
+                                    <Movies />
+                                )}
+
                                 <Routes>
                                     <Route path="/Movies" element={<Movies />} />
+                                </Routes>
+                                <Routes>
+                                    <Route path="/Tv" element={<Tv />} />
                                 </Routes>
                             </article>
 

@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import styled from 'styled-components'
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+
 
 const api = axios.create({
     baseURL: "https://api.themoviedb.org/3/movie/popular?api_key=e41d5f9d5773dc5887077f4c5ffdb645&language=en-US&page=1"
@@ -11,9 +11,15 @@ const Container = styled.section`
   display:grid;
   grid-template-columns:repeat(20,12%);
   overflow-x:scroll;  
-  height:85%;
   width:100%;
   column-gap:10px;
+
+  @media(max-width:814px){
+    grid-template-columns:repeat(20,20%);
+    }
+    @media(max-width:425px){
+        grid-template-columns:repeat(20,32%);
+    }
 
 
   p{
