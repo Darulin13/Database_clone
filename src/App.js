@@ -1,6 +1,7 @@
 import React from "react";
 import Main from "./components/Main"
 import Header from "./components/Header"
+import Footer from "./components/Footer"
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
@@ -21,6 +22,7 @@ export default function App() {
             <GlobalStyle/>
             <Header/>
             <Main />
+            <Footer/>
       
            
         </div>
