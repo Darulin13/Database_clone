@@ -117,7 +117,6 @@ const Title = styled.section`
     padding-top:100px;
     padding-bottom:50px;
     
-    
     h2 {
 
         color:white;
@@ -226,12 +225,12 @@ export default class Header extends React.Component {
 
 
     // Search function
-    Search = (event) => {
+    //dando esse problema: Array.prototype.filter() expects a value to be returned at the end of arrow function
+  /*   Search = (event) => {
         const { listFilms } = this.state;
-
         const filterFilms = listFilms.filter((item) => {
             if (item.title.toLowerCase().includes(event.target.value.toLowerCase())) {
-                return true
+                return (true)
             }
         })
         if (event.target.value === "") {
@@ -242,10 +241,7 @@ export default class Header extends React.Component {
         this.setState({
             filterFilms: filterFilms,
         })
-
-
-
-    }
+    } */
     // Modal pop-up function 
     Popup = () => {
         this.setState({
